@@ -3,18 +3,18 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 胡有明的博客
-subtitle: 
+title: 扫呗无线前端团队技术博客
+subtitle:
 description: web,nodejs,css,js,前端开发,es6
-keywords:  
+keywords:
 author: Coldbreath
 language: zh
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://blog.breathcold.com
-root: /
+url: https://saobei.github.io/blog/
+root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -43,16 +43,16 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 10
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -84,9 +84,9 @@ search:
 
 # comment
 comment:
-   type: livere
-   livere_id: 'city'
-   livere_uid: 'MTAyMC80NTc5My8yMjMwNA=='
+  type: livere
+  livere_id: "city"
+  livere_uid: "MTAyMC80NTc5My8yMjMwNA=="
 
 # SNS settings
 # 一些社交平台地址，支持以下几种：
@@ -120,5 +120,5 @@ comment:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/breathcold/blog.git  #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
+  repo: https://github.com/saobei/blog.git #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
   branch: gh-pages #published
