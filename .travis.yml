@@ -1,0 +1,44 @@
+# 配置语言及相应版本
+language: node_js
+node_js: stable
+
+# 项目所在分支
+branches:
+  only:
+  - master
+
+cache:
+    apt: true
+    directories:
+        - node_modules # 缓存不经常更改的内容
+
+# 配置环境
+before_install:
+- export TZ='Asia/Shanghai' # 更改时区
+
+# 安装依赖
+install:
+- npm install hexo-cli -g
+- npm install
+
+# 部署的命令
+script:
+- npm run generate  # hexo clean && hexo g 
+
+after_script:
+  - git clone https://${GH_REF} .deploy_git  # GH_REF是最下面配置的仓库地址
+  - cd .deploy_git
+  - git checkout master
+  - cd ../
+  - mv .deploy_git/.git/ ./public/   # 这一步之前的操作是为了保留master分支的提交记录，不然每次git init的话只有1条commit
+  - cd ./public
+  - git config user.name "breathcold"  #修改name
+  - git config user.email "13027196096@163.com"  #修改email
+  - git add .
+  - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合
+  - git push --force --quiet "https://${blog}@${GH_REF}" master:gh-pages  #Travis_Token是在Travis中配置环境变量的名称
+
+env:
+ global:
+  - GH_REF:  github.com/breathcold/blog.git  #设置GH_REF，注意更改yourname
+  - secure: "nwt0AkJV4JptHaunFlHo570I5vm+bk7SIlhhkOhSfT/O7sJS4RJxCQp0LwU+FnjCKv7uLtO6faLr3ppUbb+rb7+tiS1YjZWPng4Q1j4U29z8+zG2nk4PWy8n+JhI5xoFRpp3NjH4otQHc2KMQv54JVmEFYcXwSDFK1o0+1fDHVjkY4PvSaCWt+nA3vliYcu0Ax5Z6P8yUYrg27ZoKlYxayWIn/xF/Z6g+UV3BTNx17fL17kZFqkWP30RBsz6Y+1LbubNnbT6dpMMvPPjo7O8kx9jy09Auei2UfVVNpEu4Cd4GjtndkZ8Vcj2oJ/x7IjBw+cpaBSPazaBl6NuChGbn7yVrot3kSRtBgmuCIp1rKW/B1qI6N48z/O+r+hYR1qUFgmHU4uSa4/OgxudhIjndI3XzadFskq0n2ZmzKsLA+FLBjiezha6Whhpq/pGjMfQq4lTQ40OkKkkjLH8JpkIKyxhv0dZDKAC2NhPXglPqn8ypE1LhxJDeM1dxTZnIhlMpkjeQYd8k/nAuCb/wFFgeYGQcRCnAKLiaNhmXVqJ7darE1b8ZXrpd3EgMmTUsk6/9aFGX7a61zOL0HDifpKaNn545XCEy5ZSU5GU8fxehL8roXtlc/MGvjgJjgMcf0Wapbaa9qUdrVGhopWmFCiZm85yE9QR/D82K3JjAIKEh70="
