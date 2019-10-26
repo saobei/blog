@@ -1,4 +1,4 @@
-# Header
+# menu: 
 menu:
   首页: /
   Vue: /categories/vue # 找到所有分类为 Vue 的文章
