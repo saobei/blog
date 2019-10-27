@@ -15,7 +15,7 @@
 
 # Main menu navigation
 menu:
-  首页: /
+  首页: /blog/
   Vue: /blog/categories/vue # 找到所有分类为 Vue 的文章
   NestJs: /blog/categories/nestjs # 找到所有分类为 NestJs 的文章
   Angular: /blog/categories/angular # 找到所有分类为 Angular 的文章
