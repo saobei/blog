@@ -6,10 +6,41 @@
 title: 扫呗无线前端团队
 subtitle: 让支付回归简单
 description: web,nodejs,css,js,前端开发,es6
-keywords: ["web","nodejs","css","js","前端开发","es6"]
+keywords: web,nodejs,css,js,前端开发,es6
 author: saobei
-language: zh-CN
+language: zh-Hans
 timezone: Asia/Shanghai
+highlight_theme: ocean
+code_word_wrap: true
+top_img: 
+avatar: https://xxxx.jpg
+
+follow:
+  enable: true
+  url: 'https://github.com/saobei'
+  text: 'Follow Me'
+
+links_title: 友情链接   # Set the links title
+links:
+  胡有明的博客: https://blog.breathcold.com/
+
+toc:
+  enable: true # or false
+  number: true # or false. Since v1.5.6
+
+laibili:
+  enable: true # or false
+  uid: MTAyMC80NzI0MS8yMzc0MQ==
+
+theme_color:
+  enable: true # or false -> to use the default theme
+  main: "#000"
+  paginator: "#000"
+  button_hover: "#49B1F5"
+  text_selection: "#000"
+  link_color: "#000"
+  hr_color: "#000"
+  meta_color: "#000"
 
 #header
 menu:
@@ -95,10 +126,10 @@ time_format: HH:mm:ss
 ## Themes: https://hexo.io/themes/
 theme: melody
 
-
 powered_by:
   author: saobei
   link: https://github.com/saobei
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
