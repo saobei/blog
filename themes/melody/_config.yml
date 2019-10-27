@@ -132,7 +132,7 @@ cdn:
 
 # Post info settings
 # ---------------
-avatar:
+avatar: http://img.lcsw.cn/blog_avatar.jpg
 
 top_img: http://img.lcsw.cn/blog_banner.jpg
 
@@ -262,9 +262,16 @@ busuanzi:
 
 # Sidebar Settings
 # ---------------
-#links_title: Links
-#links:
-#Name: url
+links_title: 友情链接   # 配置友链的标题文字
+links:
+  扫呗官网: http://www.lcsw.cn
+  奇舞团博客: https://75team.com/post/list
+  廖雪峰博客: https://www.liaoxuefeng.com/
+  淘宝FED: https://fed.taobao.org/
+  汤姆大叔的博客: https://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html
+  百度EUX: http://eux.baidu.com/
+  酷壳: https://coolshell.cn/
+  凹凸实验室: https://aotu.io/notes/
 
 # Follow Me Button
 # follow:
