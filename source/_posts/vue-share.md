@@ -1,7 +1,7 @@
 ---
-title:vue开发心得分享
-tags:vue
-categories:vue
+title: vue开发心得分享
+tags: vue
+categories: vue
 ---
 
 ## 开发心得分享
