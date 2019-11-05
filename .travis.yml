@@ -38,6 +38,14 @@ after_script:
   - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`" # 提交记录包含时间 跟上面更改时区配合
   - git push --force --quiet "https://${blog}@${GH_REF}" master:gh-pages #Travis_Token是在Travis中配置环境变量的名称
 
+# deploy:
+#   provider: pages
+#   skip_cleanup: true
+#   github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+#   keep_history: true
+#   on:
+#     branch: gh-pages
+
 env:
   global:
     - GH_REF: github.com/saobei/blog.git #设置GH_REF，注意更改yourname
