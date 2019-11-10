@@ -5,7 +5,7 @@ tags:
 categories: typescript
 ---
 
-### 1、基本类型和拓展类型
+### 基本类型和拓展类型
 
 Typescript 与 JavaScript 共享基本类型，拓展了一些类型
 
@@ -56,7 +56,7 @@ let arr: Array<string> = ['12121212']; // 数组泛型写法
 let arr1: number[] = [1,2,3];    // 简写
 ```
 
-####  元组 Tuple
+#### 元组 Tuple
 
 元组类型允许你用固定数量的元素表示数组，这些元素的类型是已知的，但不必相同
 
@@ -79,7 +79,7 @@ x[3] = "world"; // Error, Property '3' does not exist on type '[string, number]'
 console.log(x[5].toString()); // Error, Property '5' does not exist on type '[string, number]'.
 ```
 
-####  enum 枚举
+#### enum 枚举
 enum类型是对JavaScript标准数据类型的一个补充。 像C#等其它语言一样，使用枚举类型可以为一组数值赋予友好的名字。
 
 ```typescript
@@ -103,7 +103,7 @@ enum status {
 }
 
 ```
-####  any和void、从不类型never
+#### any和void、从不类型never
 + any 用于不确定值得类型情况下，给变量定义any类型，但是不能多用，不然用ts就失去意义了
 + void表示空值返回，比如
 ```typescript
@@ -130,7 +130,7 @@ function infiniteLoop(): never {
 
 ```
 
-####  类型断言
+#### 类型断言
 简略的定义是：可以用来手动指定一个值的类型。
 有两种写法，尖括号和as:
 
@@ -141,7 +141,7 @@ let len: number = (<string>bar).length;
 let len1: number = (bar as string).length;
 ```
 
-### 2. 泛型 Generics
+### 泛型 Generics
 
 先来看一个demo
 
@@ -155,7 +155,7 @@ demo这个函数直接返回了传入的值，这个时候确定的是number类�
 
 在C#和Java中，可以使用"泛型"来创建可复用的组件，并且组件可支持多种数据类型。这样便可以让用户根据自己的数据类型来使用组件。
 
-####   泛型方法
+#### 泛型方法
 
 在ts里，声明泛型方法
 ```typescript
@@ -173,7 +173,7 @@ identity("12121");  // 编译器会根据传入参数来自动识别对应的类
 
 ```
 
-####   泛型与any
+#### 泛型与any
 typescript的特殊类型any在使用的时候可以代替任意的类型，看似和泛型很像，但实际上有很大差别
 
 ```typescript
@@ -191,13 +191,13 @@ function genericsDemo<T>(arg: Array<T>): Array<T> {
 + genericsDemo， 定义了arg类型是数组的泛型类型，所以一定有length属性，所以不会抛出异常
 
 
-### 3. 自定义类型类型
+###  自定义类型类型
 
 #### interface 与 type的区别
 
 ##### 相同点
 
-######  都可以描述一个对象或函数
+###### 都可以描述一个对象或函数
 
 ```typescript
 // interface
@@ -225,7 +225,7 @@ bar("112121")
 
 ```
 
-######  拓展（extends）与 交叉类型（Intersection Types）
+###### 拓展（extends）与 交叉类型（Intersection Types）
 interface是可以extends,但是type是不允许extends和implement的。但是type却可以通过交叉类型实现interface 的extends行为，并且两者并不是相互独立的，也就是说 interface 可以 extends type, type 也可以 与 interface 类型 交叉 。
 虽然效果差不多，但是两者语法不同。
 
@@ -268,7 +268,7 @@ type User = Name & {
 ##### 不同点
 
 
-######  type 可以而 interface 不行
+###### type 可以而 interface 不行
 
 + type 可以声明基本类型别名，联合类型，元组等类型
 
@@ -307,7 +307,7 @@ type Tree<T> = T | { left: Tree<T>, right: Tree<T> };
 
 ```
 
-######   interface 可以而 type 不行
+###### interface 可以而 type 不行
 
 ```typescript
 // interface 能够声明合并
@@ -330,5 +330,182 @@ User 接口为 {
 
 ```
 
+### 实现与继承： implements 和 extends
 
+extends 很明显就是ES6里面的类继承，那么implements 又是做什么的？他和extends有什么不同？
+implements 实现。与C#或Java里接口的基本作用一样，TypeScript也能够用它来明确的强制一个类去符合某种契约
+
+implements 基本方法：
+
+```typescript
+interface Bar {
+    name: string;
+    age?: number;
+}
+
+// ok
+class bar implements Bar {
+    name = '扫呗无限前端';
+}
+// ok
+class bar2 implements Bar {
+    name = '扫呗无限前端';
+    age = 18
+}
+// error 
+class bar3 implements Bar {
+    name = '扫呗无限前端';
+    age = '18'
+}
+
+```
+
+而， extends 是继承父类，两者其实可以混用：
+
+```typescript
+
+interface Fun {
+    name: string;
+    title: string;
+}
+interface Bar {
+    age: number;
+}
+class B {
+    sex = 'man';
+}
+class A extends B implements Fun,Bar {
+    name = '扫呗无限前端';
+    title = 'web前端攻城狮';
+    age = 18
+}
+
+```
+
+### 声明文件与命名空间： declare 和 namespace
+
+比如Vue项目中的 shims-tsx.d.ts 和 shims-vue.d.ts ，其初始内容是这样的：
+
+```typescript
+
+// shims-tsx.d.ts
+import Vue, { VNode } from 'vue';
+
+declare global {
+  namespace JSX {
+    // tslint:disable no-empty-interface
+    interface Element extends VNode {}
+    // tslint:disable no-empty-interface
+    interface ElementClass extends Vue {}
+    interface IntrinsicElements {
+      [elem: string]: any;
+    }
+  }
+}
+
+// shims-vue.d.ts
+declare module '*.vue' {
+  import Vue from 'vue';
+  export default Vue;
+}
+
+
+```
+
+` declare `: 当使用第三方库时，我们需要引用他的声明文件，才能获得对应的代码补全，接口提示等功能。
+
+```typescript
+
+declare var         // 声明全局变量
+declare function    // 声明全局方法
+declare class       // 声明全局类
+declare enum        // 声明全局枚举类型
+declare global      // 扩展全局变量
+declare module      // 扩展模块
+
+```
+
+` namespace `：“内部模块”现在称做“命名空间”
+
+`module X { `  相当于现在推荐的写法 `namespace X {)`
+
+
+### Typescript3.7已发布，新特性有些哪些？
+
+#### Optional chaining (可选链)
+
+```typescript
+
+//在3.7的发展期间，可选链达到了TC39第3阶段的共识
+// 可选链接命中 null 或 undefined 会立即停止运行代码
+type AlbumAPIResponse = {
+  title: string
+  artist?: {
+    name: string
+    bio?: string
+    previousAlbums?: string[]
+  }
+};
+declare const album: AlbumAPIResponse;
+
+// 可选链的写法
+const artistBio = album?.artist?.bio;
+
+// 而不是:
+const maybeArtistBio = album.artist && album.artist.bio;
+
+
+// 在访问元素属性时也可与操作符 [] 一起使用
+const maybeArtistBioElement = album?.["artist"]?.["bio"];
+const maybeFirstPreviousAlbum = album?.artist?.previousAlbums?.[0];
+
+// 处理可能不存在的函数的时候
+const callUpdateMetadata = (metadata: any) => Promise.resolve(metadata); // Fake API call
+const updateAlbumMetadata = async (metadata: any, callback?: () => void) => {
+  await callUpdateMetadata(metadata);
+  callback?.();
+};
+
+```
+
+####  Nullish Coalescing （空值合并）
+
+空值合并运算符是 || 的替代方法， 如果左边是 null 或 undefined 就返回右边；
+看一个例子：
+
+```typescript
+
+interface AppConfiguration {
+  // Default: "(no name)"; empty string IS valid
+  name:  string;
+
+  // Default: -1; 0 is valid
+  items:  number;
+
+  // Default: true
+  active: boolean;
+}
+
+// Partial 把接口字段都转为可选
+
+function updateApp(config: Partial<AppConfiguration>) {
+  // With null-coalescing operator
+  config.name = config.name ?? "(no name)";
+  config.items = config.items ?? -1;
+  config.active = config.active ?? true;
+
+  // 当前的解决办法
+  config.name = typeof config.name === "string" ? config.name : "(no name)";
+  config.items = typeof config.items === "number" ? config.items : -1;
+  config.active = typeof config.active === "boolean" ? config.active : true;
+
+  // 使用 || 会出现判断错误
+  config.name = config.name || "(no name)"; // does not allow for "" input
+  config.items = config.items || -1; // does not allow for 0 input
+  config.active = config.active || true; // really bad, always true
+}
+
+```
+
+等等...
 
