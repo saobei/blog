@@ -3,6 +3,7 @@ title: Typescript 极速入门
 tags: 
     - typescript
 categories: typescript
+date: 2019/10/09
 ---
 
 ### 基本类型和拓展类型

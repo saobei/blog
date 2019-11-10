@@ -4,6 +4,7 @@ tags:
     - typescript
     - 实战
 categories: typescript
+date: 2019/10/10
 ---
 
 ### 不能忽略的options
