@@ -38,7 +38,7 @@ widgets:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://saobei.github.io/blog/
+url: https://saobei.github.io/
 root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -60,7 +60,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
