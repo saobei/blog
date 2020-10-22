@@ -15,7 +15,7 @@
   "scripts": {
     "sync": "yuque-hexo sync",
     "clean:yuque": "yuque-hexo clean",
-    "generate": "hexo clean && hexo g",
+    "generate": "hexo g",
     "dev": "hexo clean && hexo s"
   },
   "dependencies": {
