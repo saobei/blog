@@ -26,11 +26,11 @@ script:
   - yarn run generate # hexo clean && hexo g
 
 after_script:
-  # - git clone https://${GH_REF} .deploy_git # GH_REF是最下面配置的仓库地址
-  # - cd .deploy_git
-  # - git checkout master
-  # - cd ../
-  # - mv .git/ ./public/ # 这一步之前的操作是为了保留master分支的提交记录，不然每次git init的话只有1条commit
+  - git clone https://${GH_REF} .deploy_git # GH_REF是最下面配置的仓库地址
+  - cd .deploy_git
+  - git checkout master
+  - cd ../
+  - mv .deploy_git/.git/ ./public/ # 这一步之前的操作是为了保留master分支的提交记录，不然每次git init的话只有1条commit
   - cd ./public
   - git config user.name "saobei" #修改name
   - git config user.email "huyouming@lcsw.cn" #修改email
