@@ -102,15 +102,15 @@ powered_by:
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repo: https://github.com/saobei/blog.git #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
-  branch: gh-pages #published
-
 # deploy:
 #   type: git
 #   repo: https://github.com/saobei/blog.git #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
-#   branch: master #published
+#   branch: gh-pages #published
+
+deploy:
+  type: git
+  repo: https://github.com/saobei/blog.git #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
+  branch: master #published
 # deploy:
 #   type: git
 #   repo: git@github.com:saobei/blog.git
