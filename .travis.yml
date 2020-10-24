@@ -28,7 +28,7 @@ script:
   - git config user.email "huyouming@lcsw.cn" #修改email
   - git add .
   - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`" # 提交记录包含时间 跟上面更改时区配合
-  - git push --force --quiet "https://${blog}@${GH_REF}" origin master #Travis_Token是在Travis中配置环境变量的名称
+  - git push --force --quiet "https://${blog}@${GH_REF}" master #Travis_Token是在Travis中配置环境变量的名称
 
 after_script:
   - git clone https://${GH_REF} .deploy_git # GH_REF是最下面配置的仓库地址
