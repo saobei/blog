@@ -18,12 +18,12 @@ before_install:
 
 # 安装依赖
 install:
-  - yarn global add hexo-cli
-  - yarn install
+  - npm global add hexo-cli 
+  - npm install
 
 # 部署的命令
 script:
-  - yarn run generate # hexo clean && hexo g
+  - npm run generate # hexo clean && hexo g
 
 after_script:
   - git clone https://${GH_REF} .deploy_git # GH_REF是最下面配置的仓库地址
