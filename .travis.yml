@@ -1,6 +1,7 @@
 # 配置语言及相应版本
 language: node_js
-node_js: stable
+node_js: 
+  - '10.15.3'
 
 # 项目所在分支
 branches:
