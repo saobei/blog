@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="angular从入门到入土系列01"><meta name="keywords" content="angular"><meta name="author" content="扫呗"><meta name="copyright" content="扫呗"><title>angular从入门到入土系列01 | 扫呗无线前端团队</title><link rel="shortcut icon" href="/blog/melody-favicon.ico"><link rel="stylesheet" href="/blog/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#angular从入门到入土系列01-–-Angular各个版本差异和应用架构设计"><span class="toc-number">1.</span> <span class="toc-text">angular从入门到入土系列01 – Angular各个版本差异和应用架构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#学习路线规划"><span class="toc-number">1.1.</span> <span class="toc-text">学习路线规划</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第一步-了解背景"><span class="toc-number">1.2.</span> <span class="toc-text">第一步 了解背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二步-全局看Angular应用架构设计"><span class="toc-number">1.3.</span> <span class="toc-text">第二步 全局看Angular应用架构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-组件设计-显示组件与功能组件"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 组件设计-显示组件与功能组件</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="http://img.lcsw.cn/blog_avatar.jpg"></div><div class="author-info__name text-center">扫呗</div><div class="author-info__description text-center">让支付回归简单</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/blog/archives"><span class="pull-left">Articles</span><span class="pull-right">15</span></a><a class="author-info-articles__tags article-meta" href="/blog/tags"><span class="pull-left">Tags</span><span class="pull-right">13</span></a><a class="author-info-articles__categories article-meta" href="/blog/categories"><span class="pull-left">Categories</span><span class="pull-right">5</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友情链接</div><a class="author-info-links__name text-center" href="http://www.lcsw.cn">扫呗官网</a><a class="author-info-links__name text-center" href="https://75team.com/post/list">奇舞团博客</a><a class="author-info-links__name text-center" href="https://www.liaoxuefeng.com/">廖雪峰博客</a><a class="author-info-links__name text-center" href="https://fed.taobao.org/">淘宝FED</a><a class="author-info-links__name text-center" href="https://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html">汤姆大叔的博客</a><a class="author-info-links__name text-center" href="http://eux.baidu.com/">百度EUX</a><a class="author-info-links__name text-center" href="https://coolshell.cn/">酷壳</a><a class="author-info-links__name text-center" href="https://aotu.io/notes/">凹凸实验室</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://img.lcsw.cn/blog_banner.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/blog/">扫呗无线前端团队</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/blog/">首页</a><a class="site-page" href="/blog/categories/vue">Vue</a><a class="site-page" href="/blog/categories/nestjs">NestJs</a><a class="site-page" href="/blog/categories/angular">Angular</a><a class="site-page" href="/blog/categories/typescript">Typescript</a><a class="site-page" href="/blog/categories/小程序">小程序</a><a class="site-page" href="/blog/categories/源码解读">源码解读</a><a class="site-page" href="/blog/categories/项目总结">项目总结</a></span></div><div id="post-info"><div id="post-title">angular从入门到入土系列01</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-10-22</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/blog/categories/angular/">angular</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h3 id="angular从入门到入土系列01-–-Angular各个版本差异和应用架构设计"><a href="#angular从入门到入土系列01-–-Angular各个版本差异和应用架构设计" class="headerlink" title="angular从入门到入土系列01 – Angular各个版本差异和应用架构设计"></a>angular从入门到入土系列01 – Angular各个版本差异和应用架构设计</h3><h4 id="学习路线规划"><a href="#学习路线规划" class="headerlink" title="学习路线规划"></a>学习路线规划</h4><ul>
+<li>Angular各个版本差异和应用架构设计</li>
+<li>过一遍<a href="https://angular.cn/guide/architecture-modules" target="_blank" rel="noopener">官方文档</a>，理清专业术语和掌握基础知识 </li>
+<li><a href="https://zhuanlan.zhihu.com/DepthInAngular" target="_blank" rel="noopener">Angular In Depth</a>文章过一遍</li>
+<li><a href="https://ithelp.ithome.com.tw/users/20103367/ironman/1199" target="_blank" rel="noopener">30天精通Rxjs系列</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/intro.html" target="_blank" rel="noopener">读完教程和文档</a>，掌握Ts基础</li>
+<li>学习组件库 ng-zorro-antd， Angular Material</li>
+<li>上手项目实践</li>
+</ul>
+<h4 id="第一步-了解背景"><a href="#第一步-了解背景" class="headerlink" title="第一步 了解背景"></a>第一步 了解背景</h4><p>对于刚接触Angular的新手来说，第一步无非是打基础，也是基础的一步</p>
+<p>AngularJs是google发布的第一个MVC框架，带来了许多新特性，为前端开发提供了很多新的思路，线上直到现在还有许多大型产品在用AngularjJs.</p>
+<p>AngularJs实际上是Angular2+，官方推崇类似Chrome的版本迭代理念，让开发者淡化对版本号的变化感知，希望这个框架可以持续发展。Angular是个重架构，提供了模块、组件、装饰器、服务等多种功能组件，编译方式也从JIT(just in time)逐渐过度到AOT(Ahead of time)，不断的优化性能及功能。</p>
+<p>而TS的加入也让angular如虎添翼，ts吸取了许多面向对象的编程语言优势，比如java,这样让前端的规模化协作开发不再是难题，工程质量也大幅提升。但是ng也有自身的问题，学习曲线陡峭，对开发人员的整体数值要求还是过高；还有ngzone的性能也是个问题，对外不是太友好，默认截获了所有的浏览器事件<br>和方法，调优难度和第三方产品对接难度都比较大。</p>
+<blockquote>
+<p>Angular版本差异？如何选择合适的版本？</p>
+</blockquote>
+<ul>
+<li><p>2009 – AngularJs </p>
+<p>  AngularJS 诞生于2009年，bai由Misko Hevery 等人创建，后为Google所收购。是一款优du秀的前端zhiJS框架，已经被用于Google的多款产品当中。AngularJS有着诸多特性，最为核心的是：MVC、模块化、自动化双向数据绑定、语义化标签、依赖注入等等</p>
+</li>
+<li><p>2016 – Angular2 </p>
+<p>  整个重写了1.x, 变得更加简洁，最核心的概念只剩下一个，那就是componnent,其他所有一切都是围绕着Component展开的。从这点看Angular2无疑是收到了React的强力影响，毕竟React的核心概念也只有一个，也是component，所以在使用ng2的时候，大家只需要会写Component就行了，其他的那些什么服务啊，路由啊，管道啊，都是小工具而已。接下来罗列一下Angular2与之前的1.x相比带来的核心改变:</p>
+<ul>
+<li><p>Angular删掉了$scope的概念。</p>
+<p> 在ng1.x里面，$scope是一个相当强大又相当可怕的东西，一言不合就让开发者自己$apply</p>
+</li>
+<li><p>删掉了ng-controller指令</p>
+<p> Controller终于和Component合体了</p>
+</li>
+<li><p>大幅度演进了脏值检测机制</p>
+<p> 双向绑定之所以能够工作，都是因为底层有脏值检测这么个神奇的东西，而实际上ng.1x里面的脏值检测机制的运行效率是非常差的，这就是为什么大家一直在吐槽绑定的对象不能太多、太深的原因。那么，在ng2中，大幅演进了这一机制，不仅引入了单向绑定，还引入了各种绑定策略，例如：只检测一次、利用jit动态生成脏值检测代码等等。毫无疑问，有了这些工具之后，数据绑定效率不再是问题。</p>
+</li>
+<li><p>嵌套路由问题</p>
+<p> 大家都知道，在ng1.x里面有个非常讨厌的问题，官方的路由机制是不能嵌套的，这就导致大家在开发的过程中不得不依赖第三方的ui-router.ng2中没有这个问题了，因为ng2的路由是基于Component的，天然就支持嵌套。</p>
+</li>
+<li><p>依赖注入机制改造</p>
+</li>
+<li><p>框架整体上基于Typescript开发， 这是最大的一个变更</p>
+</li>
+</ul>
+</li>
+<li><p>2017.03 – Angular4</p>
+<p>  支持向后兼容，优化视图引擎，剥离动画包，以及一些其他功能的改进</p>
+</li>
+<li><p>2017.11 – Angular5   只是遵循语义化版本号规范的正常迭代</p>
+<ul>
+<li>构建优化</li>
+<li>编译器改进, 改进了Angular编译器来支持增量编译,重新构建变得更快，特别是对生产环境的构建和AOT编译，增强的装饰器可以通过更精细化的去除空格来减小产生的包.   </li>
+<li>StaticInjector取代ReflectiveInjector依赖注入器,为了更多的减少polyfills，5.0中使用了StaticInjector注入器来替换原有的ReflectiveInjector注入器，这种注入器不再里来与ReflectPolyfill，可以大幅减少应用程序体积</li>
+<li>Zone执行速度的提升,5.0中默认提供的zones已经优化过，速度大幅提升，并且在应用程序中绕过zonee区域更加关于应用程序的性能。</li>
+<li>exportAs多命名支持, 5.0中提供了组件/指令的多命名支持，在对用户不修改代码情况下进行组件的迁移操作等非常有用，将一个组件导出多个名字，可以让组件已一个新名字来使用而达到不破坏现有代码的目的</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>2018.05 – Angular6<br>  Angular v6 新版本重点关注工具链以及工具链在 Angular 中的运行速度问题.Angular v6 是统一整体框架、Material 和 CLI 三大 Angular 组件的第一个版本，此次更新更多地关注于工具链上，以使其具有更好的可移植性。</p>
+</li>
+<li><p>2018.10 – Angular7</p>
+<p>  Angular7  这是跨整个平台的主要版本，包括核心框架，Angular Material和具有同步主要版本的CLI工具。</p>
+</li>
+<li><p>2019 - Angular8</p>
+<p>  作为一个期待已久的重大版本更新，Angular 8 为框架、Angular Material 和命令行界面工具 Angular CLI 带来了大量的改进和新功能。</p>
+<ul>
+<li><p>默认启用差异化加载（Differential loading）</p>
+</li>
+<li><p>新的渲染引擎 Ivy, 作为新的渲染引擎，Ivy 旨在彻底缩减代码尺寸并增强系统灵活性。与目前的 Angular View Engine 相比，Ivy 具有以下优势：</p>
+<ul>
+<li>通过 Angular 编译器生成的代码更具可读性，更易调试</li>
+<li>更快的构建速度</li>
+<li>有效减少负载大小，浏览器用于下载和解析应用程序的时间将更短</li>
+<li>更好的模板类型检查，以便在项目构建初期就可捕获更多 Bug</li>
+<li>优秀的向后兼容性</li>
+</ul>
+</li>
+<li><p>使用动态导入进行路由配置,在 Angular 8 中，我们可以使用路由以延迟加载部分应用程序，这是通过在路由配置中使用 loadChildren 键来实现的。</p>
+</li>
+<li><p>对 Web Worker 的支持, 在 Angular 8 之前，使用 Web Worker 存在这样的问题：在 worker 中运行的代码不能与应用程序的其余部分位于同一 JavaScript 脚本文件中，它必须是分开的。因此，对于曾经希望借助 Angular CLI 等工具，自动将 JavaScript 文件拆分、绑定到更少文件夹下的效果往往不佳,<br>  Angular 8 的新特性之一就是改进了使用 Angular CLI 捆绑 WebWorker 的支持，这项改进意味着我们将走向多并发、自动化的 Web Worker 之路。</p>
+</li>
+</ul>
+</li>
+<li><p>2020 – Angular9</p>
+<p>  这是涵盖整个平台的主要版本，包括框架，Angular Material和CLI。此版本默认情况下将应用程序切换到Ivy编译器和运行时，并引入了改进的组件测试方法</p>
+<ul>
+<li><p>默认使用 Ivy 编译器， Ivy 在 Angular8 时即可使用，但需要自行在 tsconfig.json 中增加配置以开启</p>
+</li>
+<li><p>更可靠的 ng update</p>
+<ul>
+<li>始终使用最新的 CLI。从 CLI 的 8.3.19 版本开始，我们现在在升级过程中使用了 TARGET 版本的 CLI。这意味着在未来，更新将始终由最新的 CLI 自动处理</li>
+<li>进度更新更清晰。ng update 现在做了更多的工作来告诉你幕后的情况。对于每次迁移，你都会看到迁移中的更多信息。</li>
+<li>更容易对更新进行调试。 默认情况下，ng update 运行所有迁移，并在磁盘上留下最终结果更改供你检查。版本 9 的更新还引入了新的 –create-commits 标志。当你运行 ng update –create-commits 时，该工具会在每个迁移动作后提交代码库的状态，这样你就可以逐步理解或调试我们对代码所做的更改。</li>
+</ul>
+</li>
+<li><p>providedIn 的新选项</p>
+<p>  当你在 Angular 中创建一个 @Injectable 服务时，你必须选择它应该添加到注入器的什么位置。除了以前的 root 和 module 这两种选项之外，还有两个新选项：</p>
+<ul>
+<li>platform: 指定 providedIn: ‘platform’ 可以在一个特殊的单例平台注入器中使用该服务，该注入器由该页面上的所有应用共享。</li>
+<li>any: 在每个注入该令牌的模块（包括惰性加载模块）中提供一个唯一的实例</li>
+</ul>
+</li>
+<li><p>TypeScript 3.7 支持</p>
+<p>  Angular 已经更新，可以用 TypeScript 3.6 和 3.7 了，也包括 TypeScript 3.7 中非常受欢迎的可选串联（optional chaining）特性。为了与生态系统保持同步，还更新了其他生态系统依赖的版本，比如 Zone.JS 和 RxJS</p>
+</li>
+<li><p>移除 tslib 依赖项 ,Angular 现在不再依赖 tslib。在早期版本的 Angular 中它是必需的，并且是依赖项的一部分。如果你不用 Angular CLI，则可能需要安装这个包。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>2020 –  Angular10</p>
+<p>  这是跨越整个平台（包括框架、Angular Material 和 CLI）的一次主要版本更新</p>
+<p>  <a href="https://baijiahao.baidu.com/s?id=1673431402914533055&wfr=spider&for=pc" target="_blank" rel="noopener">Angular 10正在接近终点线：带来哪些颠覆性变化</a></p>
+</li>
+</ul>
+<h4 id="第二步-全局看Angular应用架构设计"><a href="#第二步-全局看Angular应用架构设计" class="headerlink" title="第二步 全局看Angular应用架构设计"></a>第二步 全局看Angular应用架构设计</h4><h5 id="1-组件设计-显示组件与功能组件"><a href="#1-组件设计-显示组件与功能组件" class="headerlink" title="1. 组件设计-显示组件与功能组件"></a>1. 组件设计-显示组件与功能组件</h5></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">扫呗</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://saobei.github.io/2020/10/22/angular-learn01/">https://saobei.github.io/2020/10/22/angular-learn01/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/angular/">angular</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/blog/2021/02/20/first-day/"><i class="fa fa-chevron-left">  </i><span>入职第一天</span></a></div><div class="next-post pull-right"><a href="/blog/2020/03/10/git-standard/"><span>git团队协作使用规范</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="lv-container" data-id="city" data-uid="MTAyMC80NzI0MS8yMzc0MQ=="><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(http://img.lcsw.cn/blog_banner.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2019 - 2022 By 扫呗</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/blog/js/utils.js?version=1.6.1"></script><script src="/blog/js/fancybox.js?version=1.6.1"></script><script src="/blog/js/sidebar.js?version=1.6.1"></script><script src="/blog/js/copy.js?version=1.6.1"></script><script src="/blog/js/fireworks.js?version=1.6.1"></script><script src="/blog/js/transition.js?version=1.6.1"></script><script src="/blog/js/scroll.js?version=1.6.1"></script><script src="/blog/js/head.js?version=1.6.1"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script></body></html>

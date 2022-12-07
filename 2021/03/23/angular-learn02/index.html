@@ -1,0 +1,172 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="angular从入门到入土系列02"><meta name="keywords" content="angular"><meta name="author" content="扫呗"><meta name="copyright" content="扫呗"><title>angular从入门到入土系列02 | 扫呗无线前端团队</title><link rel="shortcut icon" href="/blog/melody-favicon.ico"><link rel="stylesheet" href="/blog/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#组件"><span class="toc-number">1.</span> <span class="toc-text">组件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-组件是什么？"><span class="toc-number">1.1.</span> <span class="toc-text">1. 组件是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-如何创建组件？"><span class="toc-number">1.2.</span> <span class="toc-text">2. 如何创建组件？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-组件有哪些生命周期"><span class="toc-number">2.</span> <span class="toc-text">3. 组件有哪些生命周期?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-视图封装是什么？有几种模式？"><span class="toc-number">3.</span> <span class="toc-text">4. 视图封装是什么？有几种模式？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-组件之间是如何进行交互的？"><span class="toc-number">4.</span> <span class="toc-text">5. 组件之间是如何进行交互的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-聊一下组件的样式"><span class="toc-number">5.</span> <span class="toc-text">6. 聊一下组件的样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-如何动态加载组件？"><span class="toc-number">5.1.</span> <span class="toc-text">7. 如何动态加载组件？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-模板相关"><span class="toc-number">5.2.</span> <span class="toc-text">8. 模板相关</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-指令相关"><span class="toc-number">6.</span> <span class="toc-text">9. 指令相关</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="http://img.lcsw.cn/blog_avatar.jpg"></div><div class="author-info__name text-center">扫呗</div><div class="author-info__description text-center">让支付回归简单</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/blog/archives"><span class="pull-left">Articles</span><span class="pull-right">15</span></a><a class="author-info-articles__tags article-meta" href="/blog/tags"><span class="pull-left">Tags</span><span class="pull-right">13</span></a><a class="author-info-articles__categories article-meta" href="/blog/categories"><span class="pull-left">Categories</span><span class="pull-right">5</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友情链接</div><a class="author-info-links__name text-center" href="http://www.lcsw.cn">扫呗官网</a><a class="author-info-links__name text-center" href="https://75team.com/post/list">奇舞团博客</a><a class="author-info-links__name text-center" href="https://www.liaoxuefeng.com/">廖雪峰博客</a><a class="author-info-links__name text-center" href="https://fed.taobao.org/">淘宝FED</a><a class="author-info-links__name text-center" href="https://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html">汤姆大叔的博客</a><a class="author-info-links__name text-center" href="http://eux.baidu.com/">百度EUX</a><a class="author-info-links__name text-center" href="https://coolshell.cn/">酷壳</a><a class="author-info-links__name text-center" href="https://aotu.io/notes/">凹凸实验室</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://img.lcsw.cn/blog_banner.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/blog/">扫呗无线前端团队</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/blog/">首页</a><a class="site-page" href="/blog/categories/vue">Vue</a><a class="site-page" href="/blog/categories/nestjs">NestJs</a><a class="site-page" href="/blog/categories/angular">Angular</a><a class="site-page" href="/blog/categories/typescript">Typescript</a><a class="site-page" href="/blog/categories/小程序">小程序</a><a class="site-page" href="/blog/categories/源码解读">源码解读</a><a class="site-page" href="/blog/categories/项目总结">项目总结</a></span></div><div id="post-info"><div id="post-title">angular从入门到入土系列02</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-03-23</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/blog/categories/angular/">angular</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><h4 id="1-组件是什么？"><a href="#1-组件是什么？" class="headerlink" title="1. 组件是什么？"></a>1. 组件是什么？</h4><pre><code>angular最基本的构造块</code></pre><h4 id="2-如何创建组件？"><a href="#2-如何创建组件？" class="headerlink" title="2. 如何创建组件？"></a>2. 如何创建组件？</h4><p>a. 命令的方式创建</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng generate(g) component(c) componentName(组件路径+名称，路径不加的话默认根路径) --module moduleName(指定这个组件归属于哪一个模块)</span><br></pre></td></tr></table></figure>
+
+<p>b. 手动创建<br>在对应的目录新建对应的ts,html,css文件即可</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>两种组件模板声明</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引用外部文件方式</span></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="string">'app-component-overview'</span>,</span><br><span class="line">  templateUrl: <span class="string">'./component-overview.component.html'</span>,</span><br><span class="line">  styleUrls: [<span class="string">'./component-overview.component.css'</span>]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 直接写在组件内部</span></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="string">'app-component-overview'</span>,</span><br><span class="line">  template: <span class="string">'&lt;h1&gt;Hello World!&lt;/h1&gt;'</span>,</span><br><span class="line">  styles: [<span class="string">'h1 &#123; font-weight: normal; &#125;'</span>]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-组件有哪些生命周期"><a href="#3-组件有哪些生命周期" class="headerlink" title="3. 组件有哪些生命周期?"></a>3. 组件有哪些生命周期?</h3><ol>
+<li><p>具体见文档</p>
+</li>
+<li><p>有哪些注意点？</p>
+</li>
+</ol>
+<ul>
+<li><p>@angular/core 有导出对应额生命周期，需要自己去“实现”，比如 OnInit 的钩子方法叫做 ngOnInit</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Directive()</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">PeekABooDirective</span> <span class="title">implements</span> <span class="title">OnInit</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(private logger: LoggerService) &#123; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// implement OnInit's `ngOnInit` method</span></span><br><span class="line">  ngOnInit() &#123; <span class="keyword">this</span>.logIt(<span class="string">`OnInit`</span>); &#125;</span><br><span class="line"></span><br><span class="line">  logIt(msg: string) &#123;</span><br><span class="line">    <span class="keyword">this</span>.logger.log(<span class="string">`#<span class="subst">$&#123;nextId++&#125;</span> <span class="subst">$&#123;msg&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>你不需要实现所有的生命周期，只需要实现自己需要用的就可以了</p>
+</li>
+<li><p>在构造函数外部执行复杂的初始化。组件的构造应该便宜又简单。比如，你不应该在组件构造函数中获取数据。当在测试中创建组件时或者决定显示它之前，你不应该担心新组件会尝试联系远程服务器。</p>
+</li>
+<li><p>在 Angular 设置好输入属性之后设置组件。构造函数应该只把初始局部变量设置为简单的值。请记住，只有在构造完成之后才会设置指令的数据绑定输入属性。如果要根据这些属性对指令进行初始化，请在运行 ngOnInit() 时设置它们。</p>
+</li>
+<li><p>在实例销毁时进行清理：把清理逻辑放到ngOnDestro中， 这个逻辑必然就会在组件执行销毁指令之前执行。这里是释放资源的地方，这些资源不会被自动垃圾回收。如果不这样做，会存在内存泄漏的风险</p>
+<ul>
+<li>取消可订阅对象和DOM事件</li>
+<li>清楚定时器</li>
+<li>反注册该指令在全局或应用服务中注册过的所有回调</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>ngOnDestroy() 方法也可以用来通知应用程序的其它部分，该组件即将消失</p>
+</blockquote>
+<h3 id="4-视图封装是什么？有几种模式？"><a href="#4-视图封装是什么？有几种模式？" class="headerlink" title="4. 视图封装是什么？有几种模式？"></a>4. 视图封装是什么？有几种模式？</h3><p>在angular中，组件的样式被封装进了自己的视图中，而不会影响到应用程序的其他部分。<br>通过在组件元数据上设置视图封装模式，可以分别控制每个组件的封装模式，共分为以下几种：</p>
+<ul>
+<li><code>ShadowDom 模式</code>(<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM);组件的视图被附加到这个" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM);组件的视图被附加到这个</a> Shadow DOM 中，组件的样式也被包含在这个 Shadow DOM 中。(译注：不进不出，没有样式能进来，组件样式出不去。)</li>
+<li><code>Emulated 模式</code>（默认值）通过预处理（并改名）CSS 代码来模拟 Shadow DOM 的行为，以达到把 CSS 样式局限在组件视图中的目的。 更多信息，见附录 1。(译注：只进不出，全局样式能进来，组件样式出不去)</li>
+<li><code>None</code>意味着 Angular 不使用视图封装。 Angular 会把 CSS 添加到全局样式中。而不会应用上前面讨论过的那些作用域规则、隔离和保护等。 从本质上来说，这跟把组件的样式直接放进 HTML 是一样的</li>
+</ul>
+<p>如何设置？<br>通过组件元数据中的encapsulation属性来设置组件的视图封装模式</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// warning: few browsers support shadow DOM encapsulation at this time</span></span><br><span class="line">encapsulation: ViewEncapsulation.ShadowDom</span><br></pre></td></tr></table></figure>
+
+<p>具体说明见文档</p>
+<h3 id="5-组件之间是如何进行交互的？"><a href="#5-组件之间是如何进行交互的？" class="headerlink" title="5. 组件之间是如何进行交互的？"></a>5. 组件之间是如何进行交互的？</h3><ul>
+<li><p>通过输入性绑定把数据从父组件传到子组件<br><code>@Input</code> 装饰器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Component, Input &#125; from &apos;@angular/core&apos;;</span><br><span class="line"></span><br><span class="line">import &#123; Hero &#125; from &apos;./hero&apos;;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: &apos;app-hero-child&apos;,</span><br><span class="line">  template: `</span><br><span class="line">    &lt;h3&gt;&#123;&#123;hero.name&#125;&#125; says:&lt;/h3&gt;</span><br><span class="line">    &lt;p&gt;I, &#123;&#123;hero.name&#125;&#125;, am at your service, &#123;&#123;masterName&#125;&#125;.&lt;/p&gt;</span><br><span class="line">  `</span><br><span class="line">&#125;)</span><br><span class="line">export class HeroChildComponent &#123;</span><br><span class="line">  @Input() hero: Hero;  // </span><br><span class="line">  @Input(&apos;master&apos;) masterName: string; // 第二个 @Input 为子组件的属性名 masterName 指定一个别名 master, 不推荐这么干</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 父组件调用</span><br><span class="line">&lt;app-hero-child *ngFor=&quot;let hero of heroes&quot; [hero]=&quot;hero&quot; [master]=&quot;master&quot;&gt; &lt;/app-hero-child&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过setter截听输入属性值的变化</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Component, Input &#125; from &apos;@angular/core&apos;;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: &apos;app-name-child&apos;,</span><br><span class="line">  template: &apos;&lt;h3&gt;&quot;&#123;&#123;name&#125;&#125;&quot;&lt;/h3&gt;&apos;</span><br><span class="line">&#125;)</span><br><span class="line">export class NameChildComponent &#123;</span><br><span class="line">  @Input()</span><br><span class="line">  get name(): string &#123; return this._name; &#125;</span><br><span class="line">  set name(name: string) &#123;</span><br><span class="line">    this._name = (name &amp;&amp; name.trim()) || &apos;&lt;no name set&gt;&apos;;</span><br><span class="line">  &#125;</span><br><span class="line">  private _name = &apos;&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过ngOnChange()来截听输入属性值的变化<br>利用OnChanges生命周期钩子来检测输入值的变化并作出回应，当需要监视多个、交互式输入属性的时候，这个方法比setter更合适</li>
+</ul>
+<ul>
+<li><p>父组件监听子组件的事件, <code>@Output</code> <code>EventEmitter</code> <code>emit</code></p>
+</li>
+<li><p>父组件和子组件通过本地变量互动<br>父组件不能通过使用数据绑定的方式来使用子组件的属性和方法，但可以在父组件的模板里，新建一个本地变量来代表子组件，然后利用这变量来读取子组件的方法和属性</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 宿主组件模板</span><br><span class="line">  &lt;button (click)=&quot;timer.start()&quot;&gt;Start&lt;/button&gt;</span><br><span class="line">  &lt;button (click)=&quot;timer.stop()&quot;&gt;Stop&lt;/button&gt;</span><br><span class="line">  &lt;div class=&quot;seconds&quot;&gt;&#123;&#123;timer.seconds&#125;&#125;&lt;/div&gt;</span><br><span class="line">  &lt;app-countdown-timer #timer&gt;&lt;/app-countdown-timer&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>父组件调用@ViewChild<br>方便父组件的类（component.ts控制器）调用子组件的数据和方法，上面所说的本地变量的方式无法满足。这种是当父组件的类需要访问时，把子组件作为viewChild注入到父组件里</p>
+</li>
+<li><p>父组件和子组件通过服务的方式进行通信<br>父组件和它的子组件共享同一个服务，利用该服务在组件家族内部实现双向通讯。</p>
+</li>
+</ul>
+<h3 id="6-聊一下组件的样式"><a href="#6-聊一下组件的样式" class="headerlink" title="6. 聊一下组件的样式"></a>6. 聊一下组件的样式</h3><ul>
+<li><p>范围化的样式(上述提到的视图封装模式)</p>
+<blockquote>
+<p>在 @Component 的元数据中指定的样式只会对该组件的模板生效。</p>
+</blockquote>
+</li>
+<li><p>特殊的选择器<br>:host 使用 :host 伪类选择器，用来选择组件宿主元素中的元素（相对于组件模板内部的元素）<br>:host 选择是是把宿主元素作为目标的唯一方式。注意：宿主不是组件自身模板的一部分，而是父组件模板的一部分。<br>要把宿主样式作为条件，就要像函数一样把其它选择器放在 :host 后面的括号中。<br>当再次将宿主元素作为目标的时候，只有当其带有同样的名称的时候，在会生效。</p>
+</li>
+</ul>
+<p>:host-context<br>有时候，基于某些来自组件视图外部的条件应用样式是很有用的。 例如，在文档的 元素上可能有一个用于表示样式主题 (theme) 的 CSS 类，你应当基于它来决定组件的样式。这时可以使用 :host-context() 伪类选择器。它也以类似 :host() 形式使用。它在当前组件宿主元素的祖先节点中查找 CSS 类， 直到文档的根节点为止。在与其它选择器组合使用时，它非常有用</p>
+<h4 id="7-如何动态加载组件？"><a href="#7-如何动态加载组件？" class="headerlink" title="7. 如何动态加载组件？"></a>7. 如何动态加载组件？</h4><p>见代码示例</p>
+<h4 id="8-模板相关"><a href="#8-模板相关" class="headerlink" title="8. 模板相关"></a>8. 模板相关</h4><p>细节见文档</p>
+<ul>
+<li>将ngForm与模板变量一起使用<br>引用指令的exportAs名字来引用不同的值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;form #itemForm=&quot;ngForm&quot; (ngSubmit)=&quot;onSubmit(itemForm)&quot;&gt;</span><br><span class="line">  &lt;label for=&quot;name&quot;&gt;Name &lt;input class=&quot;form-control&quot; name=&quot;name&quot; ngModel required /&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">  &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;div [hidden]=&quot;!itemForm.form.valid&quot;&gt;</span><br><span class="line">  &lt;p&gt;&#123;&#123; submitMessage &#125;&#125;&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>如果没有ngForm这个属性值，itemForm引用的是HTMLFormElement也就是form元素。而Component和Directive之间的差异在于Angular在没有指定属性值的情况下，Angular会引用Component,而Directive不会改变这种隐式引用（即他的宿主元素）<br>而是用了NgForm之后,itemForm就是对ngForm指令的引用，可以用它来跟踪表单组件中每个控件的值和有效性<br>与原生的form不同，ngForm指令有一个form属性。如果itemForm.form.valid无效，那么ngForm的form属性就会让你禁用提交按钮。</p>
+<ul>
+<li>在嵌套模板中访问<br>内部模板可以访问外模板定义的模板变量。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input #ref1 type=&quot;text&quot; [(ngModel)]=&quot;firstExample&quot; /&gt;</span><br><span class="line">&lt;span *ngIf=&quot;true&quot;&gt;Value: &#123;&#123; ref1.value &#125;&#125;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这种情况下，有一个包含这个 <span> 的隐式 <ng-template>，而该变量的定义在该隐式模板之外。访问父模板中的模板变量是可行的，因为子模板会从父模板继承上下文<br>等同于下面和这个情况</ng-template></span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;input #ref1 type=&quot;text&quot; [(ngModel)]=&quot;firstExample&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- New template --&gt;</span><br><span class="line">&lt;ng-template [ngIf]=&quot;true&quot;&gt;</span><br><span class="line">  &lt;!-- Since the context is inherited, the value is available to the new template --&gt;</span><br><span class="line">  &lt;span&gt;Value: &#123;&#123; ref1.value &#125;&#125;&lt;/span&gt;</span><br><span class="line">&lt;/ng-template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>但是从外部的父模板访问本模板中的变量是行不通的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input *ngIf=&quot;true&quot; #ref2 type=&quot;text&quot; [(ngModel)]=&quot;secondExample&quot; /&gt;</span><br><span class="line">&lt;span&gt;Value: &#123;&#123; ref2?.value &#125;&#125;&lt;/span&gt; &lt;!-- doesn&apos;t work --&gt;</span><br></pre></td></tr></table></figure>
+
+<p>等同于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ng-template [ngIf]=&quot;true&quot;&gt;</span><br><span class="line">  &lt;!-- The reference is defined within a template --&gt;</span><br><span class="line">  &lt;input #ref2 type=&quot;text&quot; [(ngModel)]=&quot;secondExample&quot; /&gt;</span><br><span class="line">&lt;/ng-template&gt;</span><br><span class="line">&lt;!-- ref2 accessed from outside that template doesn&apos;t work --&gt;</span><br><span class="line">&lt;span&gt;Value: &#123;&#123; ref2?.value &#125;&#125;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-指令相关"><a href="#9-指令相关" class="headerlink" title="9. 指令相关"></a>9. 指令相关</h3><ul>
+<li>属性指令<br>说明见文档</li>
+</ul>
+<p>常见的内置属性指令</p>
+<ul>
+<li>NgClass – 添加和删除一组css类 ,要添加或删除单个类请使用 [class] 类绑定而不是 NgClass</li>
+<li>NgStyle – 添加和删除一组Html样式 ,有些情况需要考虑使用 [style] 样式绑定，而不是NgStyle</li>
+<li>NgModel – 将数据双向绑定添加到html元素</li>
+</ul>
+<ul>
+<li>结构指令</li>
+</ul>
+<p>常见的内置结构指令</p>
+<ul>
+<li>NgIf – 从模板创建或销毁视图</li>
+<li>NgFor – 为列表中的每一个条目重复渲染一个节点</li>
+<li>NgSwitch – 一组在备用视图之间切换的指令</li>
+</ul>
+<ul>
+<li>为啥要在前面加一个 * ？<br>星号是一个用来简化更复杂语法的“语法糖”。 从内部实现来说，Angular 把 *ngIf 属性 翻译成一个 <ng-template> 元素 并用它来包裹宿主元素，</ng-template></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div *ngIf=&quot;hero&quot; class=&quot;name&quot;&gt;&#123;&#123;hero.name&#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;ng-template [ngIf]=&quot;hero&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;name&quot;&gt;&#123;&#123;hero.name&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/ng-template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>ng-template 永远不会渲染出来。只有最终产出的结果会生成出来</p>
+<ul>
+<li>显示与隐藏NgIf</li>
+</ul>
+<p>隐藏元素时，该元素及其所有后代仍保留在 DOM 中。这些元素的所有组件都保留在内存中，Angular 会继续做变更检查。它可能会占用大量计算资源，并且会不必要地降低性能。</p>
+<p>NgIf 工作方式有所不同。如果 NgIf 为 false，则 Angular 将从 DOM 中删除该元素及其后代。这销毁了它们的组件，释放了资源，从而带来更好的用户体验。</p>
+<p>如果要隐藏大型组件树，请考虑使用 NgIf 作为显示/隐藏的更有效替代方法。</p>
+<ul>
+<li>防范空指针错误<br>ngIf 另一个优点是你可以使用它来防范空指针错误。显示/隐藏就是最合适的极简用例，当你需要防范时，请改用 ngIf 代替。如果其中嵌套的表达式尝试访问 null 的属性，Angular 将引发错误。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div *ngIf=&quot;currentCustomer&quot;&gt;Hello, &#123;&#123;currentCustomer.name&#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>带 tracckBy的*ngFor<br>你可以使用 trackBy 来让它更加高效。向该组件添加一个方法，该方法返回 NgFor 应该跟踪的值。这个例子中，该值是英雄的 id。如果 id 已经被渲染，Angular 就会跟踪它，而不会重新向服务器查询相同的 id</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// component</span><br><span class="line">trackByItems(index: number, item: Item): number &#123; return item.id; &#125;</span><br><span class="line"></span><br><span class="line">// html</span><br><span class="line">&lt;div *ngFor=&quot;let item of items; trackBy: trackByItems&quot;&gt;</span><br><span class="line">  (&#123;&#123;item.id&#125;&#125;) &#123;&#123;item.name&#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">扫呗</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://saobei.github.io/2021/03/23/angular-learn02/">https://saobei.github.io/2021/03/23/angular-learn02/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/angular/">angular</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/blog/2021/05/28/web开发规范白皮书/"><i class="fa fa-chevron-left">  </i><span>web开发规范白皮书-vue部分</span></a></div><div class="next-post pull-right"><a href="/blog/2021/02/20/first-day/"><span>入职第一天</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="lv-container" data-id="city" data-uid="MTAyMC80NzI0MS8yMzc0MQ=="><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(http://img.lcsw.cn/blog_banner.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2019 - 2022 By 扫呗</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/blog/js/utils.js?version=1.6.1"></script><script src="/blog/js/fancybox.js?version=1.6.1"></script><script src="/blog/js/sidebar.js?version=1.6.1"></script><script src="/blog/js/copy.js?version=1.6.1"></script><script src="/blog/js/fireworks.js?version=1.6.1"></script><script src="/blog/js/transition.js?version=1.6.1"></script><script src="/blog/js/scroll.js?version=1.6.1"></script><script src="/blog/js/head.js?version=1.6.1"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script></body></html>
